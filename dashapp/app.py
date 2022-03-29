@@ -81,7 +81,8 @@ def fill_game_select(children):
 def populate_datatable(date):
     if date:
         data = game_log_db.query(KeyConditionExpression=Key('GAME_DATE').eq(date))['Items']
-        df = pd.DataFrame.from_records(data)
+        cols = ['GAME_ID', 'MATCHUP', 'Home', 'Away', 'WL', 'GAME_DATE']
+        df = pd.DataFrame.from_records(data)[cols]
 
         return [
             dash_table.DataTable(
@@ -98,16 +99,15 @@ def populate_datatable(date):
                 sort_action="native",  # give user capability to sort columns
                 sort_mode="single",  # sort across 'multi' or 'single' columns
                 page_current=0,  # page number that user is on
-                style_cell={'textAlign': 'left', 'minWidth': '100px',
-                            'width': '100px', 'maxWidth': '100px'},
+                style_cell={'textAlign': 'center'},
             )
         ]
     else:
         return [html.H1(
-            children='Please Insert Date'
+            children='Insert Date'
         )]
 
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0", port=8050, debug=True)

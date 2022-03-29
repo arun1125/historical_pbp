@@ -1,13 +1,13 @@
 {
     "AWSEBDockerrunVersion": "1",
     "Image": {
-      "Name": "arun1995plus1/nbabackend",
+      "Name": "arun1995plus1/historical_pbp",
       "Update": "true"
     },
     "Ports": [
       {
-        "ContainerPort": 80,
-        "HostPort": 80
+        "ContainerPort": 8050,
+        "HostPort": 8050
       }
     ]
   }

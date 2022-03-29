@@ -6,10 +6,10 @@ COPY  ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./app /code/app
+COPY ./dashapp /code/dashapp
 
-ENV PYTHONPATH "${PYTHONPATH}:/code/app"
+# ENV PYTHONPATH "${PYTHONPATH}:/code/dashapp"
 
-EXPOSE 80
+EXPOSE 8050
 
-CMD ["python", "./app/main.py"]
+CMD ["python", "./dashapp/app.py"]
